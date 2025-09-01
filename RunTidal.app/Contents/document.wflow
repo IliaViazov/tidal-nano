@@ -66,7 +66,7 @@ read LEFT TOP RIGHT BOTTOM &lt;&lt;&lt;$(osascript -e 'tell application "Finder"
 
 
 # Paths
-TIDAL_DIR=~/tidal
+TIDAL_DIR=/Applications/tidal-nano
 TIDAL_SCRIPT=BootTidal.hs
 TIDAL_LOG=snippets.txt
 REFERENCE_FILE=reference.txt
@@ -89,16 +89,16 @@ EOF
 }
 
 # SuperCollider window
-open_new_window "cd $TIDAL_DIR &amp;&amp; sclang '$SCLANG_SCRIPT'" "{0, $(((5 * BOTTOM / 7)+40)), $RIGHT, $(((7 * BOTTOM / 8)+40))}" "SolarizedDark"
+open_new_window "cd $TIDAL_DIR &amp;&amp; sclang '$SCLANG_SCRIPT'" "{0, $(((5 * BOTTOM / 7)+40)), $RIGHT, $(((7 * BOTTOM / 8)+40))}" "Tidal"
 
 # nano log window 
-open_new_window "cd $TIDAL_DIR &amp;&amp; nano $TIDAL_LOG" "{$((1 *RIGHT / 2)), 0, $((RIGHT - (1 * RIGHT / 5))), $((5 * BOTTOM / 7))}" "SolarizedDark"
+open_new_window "cd $TIDAL_DIR &amp;&amp; nano $TIDAL_LOG" "{$((1 *RIGHT / 2)), 0, $((RIGHT - (1 * RIGHT / 5))), $((5 * BOTTOM / 7))}" "Tidal"
 
 # reference window 
-open_new_window "cd $TIDAL_DIR &amp;&amp; nano $REFERENCE_FILE" "{$((4 * RIGHT / 5)), 0, $RIGHT, $((5 * BOTTOM / 7))}" "SolarizedDark"
+open_new_window "cd $TIDAL_DIR &amp;&amp; nano $REFERENCE_FILE" "{$((4 * RIGHT / 5)), 0, $RIGHT, $((5 * BOTTOM / 7))}" "Tidal"
 
 # TidalCycles REPL 
-open_new_window "cd $TIDAL_DIR &amp;&amp; ghci -ghci-script '$TIDAL_SCRIPT'" "{0, 0, $((RIGHT - (1 * RIGHT / 2))), $((5 * BOTTOM / 7))}" "SolarizedDark"
+open_new_window "cd $TIDAL_DIR &amp;&amp; ghci -ghci-script '$TIDAL_SCRIPT'" "{0, 0, $((RIGHT - (1 * RIGHT / 2))), $((5 * BOTTOM / 7))}" "Tidal"
 </string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -212,7 +212,7 @@ open_new_window "cd $TIDAL_DIR &amp;&amp; ghci -ghci-script '$TIDAL_SCRIPT'" "{0
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:795.000000</string>
+				<string>309.000000:618.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
