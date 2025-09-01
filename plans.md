@@ -9,3 +9,4 @@
     7. Implement the terminal theme into the script
     8. Make a better Readme
     9. Philosophy
+    10. Make nice terminal graphics in the right bottom corner
