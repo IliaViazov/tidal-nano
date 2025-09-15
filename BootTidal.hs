@@ -23,5 +23,5 @@ instance Tidally where tidal = tidalInst
 -- You can also add your own aliases in this file. For example:
 -- fastsquizzed pat = fast 2 $ pat # squiz 1.5
 
-:set prompt "tidal> "
+:set prompt "\ESC[34m\STXtidal\ESC[m\STX> "
 :set prompt-cont ""

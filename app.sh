@@ -5,9 +5,9 @@ read LEFT TOP RIGHT BOTTOM <<<$(osascript -e 'tell application "Finder" to get b
 
 
 # Paths
-TIDAL_DIR=/Applications/tidal-nano
+TIDAL_DIR=/Users/ilia_viazov/Desktop/Projects/tidal-nano
 TIDAL_SCRIPT=BootTidal.hs
-TIDAL_LOG=snippets.txt
+TIDAL_LOG=snippets.hs
 REFERENCE_FILE=reference.txt
 SCLANG_SCRIPT=BootSC.scd
 
@@ -30,14 +30,11 @@ EOF
 # SuperCollider window
 open_new_window "cd $TIDAL_DIR && sclang '$SCLANG_SCRIPT'" "{0, $(((5 * BOTTOM / 7)+40)), $RIGHT, $(((7 * BOTTOM / 8)+40))}" "Tidal"
 
-# # animation window
-# open_new_window "cd $TIDAL_DIR && ./animation.sh" "{$((1*RIGHT/2)), $(((5 * BOTTOM / 7)+40)), $RIGHT, $(((7 * BOTTOM / 8)+40))}" "Tidal"
-
 # nano log window 
-open_new_window "cd $TIDAL_DIR && nano $TIDAL_LOG" "{$((1 *RIGHT / 2)), 0, $((RIGHT - (1 * RIGHT / 5))), $((5 * BOTTOM / 7))}" "Tidal"
+open_new_window "cd $TIDAL_DIR/snippets && nano $TIDAL_LOG" "{$((1 *RIGHT / 2)), 0, $((RIGHT - (1 * RIGHT / 5))), $((5 * BOTTOM / 7))}" "Tidal"
 
 # reference window 
-open_new_window "cd $TIDAL_DIR && nano -v $REFERENCE_FILE" "{$((4 * RIGHT / 5)), 0, $RIGHT, $((5 * BOTTOM / 7))}" "Tidal"
+open_new_window "cd $TIDAL_DIR/reference && glow -s theme.json" "{$((4 * RIGHT / 5)), 0, $RIGHT, $((5 * BOTTOM / 7))}" "Tidal"
 
 # TidalCycles REPL 
-open_new_window "cd $TIDAL_DIR && ghci -ghci-script '$TIDAL_SCRIPT'" "{0, 0, $((RIGHT - (1 * RIGHT / 2))), $((5 * BOTTOM / 7))}" "Tidal"
+open_new_window "cd $TIDAL_DIR && ./ghci-color -ghci-script '$TIDAL_SCRIPT'" "{0, 0, $((RIGHT - (1 * RIGHT / 2))), $((5 * BOTTOM / 7))}" "Tidal"
