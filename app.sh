@@ -28,13 +28,13 @@ EOF
 }
 
 # SuperCollider window
-open_new_window "cd $TIDAL_DIR && sclang '$SCLANG_SCRIPT'" "{0, $(((5 * BOTTOM / 7)+40)), $RIGHT, $(((7 * BOTTOM / 8)+40))}" "Tidal"
+open_new_window "cd $TIDAL_DIR && sclang '$SCLANG_SCRIPT'" "{0, $(((5 * BOTTOM / 7)+40)), $RIGHT, $(((7 * BOTTOM / 8)+40))}" "Basic"
 
 # nano log window 
-open_new_window "cd $TIDAL_DIR/snippets && nano $TIDAL_LOG" "{$((1 *RIGHT / 2)), 0, $((RIGHT - (1 * RIGHT / 5))), $((5 * BOTTOM / 7))}" "Tidal"
+open_new_window "cd /Users/ilia_viazov/Desktop/Projects/tidal-nano/snippets && nano snippets.hs -i -m -l --nowrap -/ -_" "{$((1 *RIGHT / 2)), 0, $((RIGHT - (1 * RIGHT / 5))), $((5 * BOTTOM / 7))}" "Basic"
 
 # reference window 
-open_new_window "cd $TIDAL_DIR/reference && glow -s theme.json" "{$((4 * RIGHT / 5)), 0, $RIGHT, $((5 * BOTTOM / 7))}" "Tidal"
+open_new_window "cd $TIDAL_DIR/reference && glow -w 0" "{$((4 * RIGHT / 5)), 0, $RIGHT, $((5 * BOTTOM / 7))}" "Basic"
 
 # TidalCycles REPL 
-open_new_window "cd $TIDAL_DIR && ./ghci-color -ghci-script '$TIDAL_SCRIPT'" "{0, 0, $((RIGHT - (1 * RIGHT / 2))), $((5 * BOTTOM / 7))}" "Tidal"
+open_new_window "cd $TIDAL_DIR && ./ghci-color -ghci-script '$TIDAL_SCRIPT'" "{0, 0, $((RIGHT - (1 * RIGHT / 2))), $((5 * BOTTOM / 7))}" "Basic"
