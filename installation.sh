@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+install_path= ~/.nano
 
 set -e
 
@@ -38,18 +39,24 @@ else
     echo "TidalCycles already installed."
 fi
 
-#here insert ghci-color
-
-# 3. Install Nano editor
+# 3.a Install Nano editor and highlight
 if ! command_exists nano ; then
     echo "Installing Nano editor..."
     brew install nano
+    git clone https://github.com/scopatz/nanorc.git $install_path
+    echo "include $install_path/*.nanorc" >> ~/.nanorc
 else
     echo "Nano already installed."
 fi
 
-#here insert mv of .nanorc and syntax highlighting
-# https://github.com/scopatz/nanorc
+# 3.b Install Glow
+
+if ! command_exists glow ; then
+    echo "Installing Glow..."
+    brew install glow
+else
+    echo "Glow exists"
+fi
 
 # 4. Install SuperCollider
 if ! command_exists sclang ; then
