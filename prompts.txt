@@ -1,0 +1,89 @@
+Last login: Tue Sep 16 13:27:39 on ttys003
+cd /Users/ilia_viazov/Desktop/Projects/tidal-nano && ./ghci-color -ghci-script 'BootTidal.hs'
+ilia_viazov@MacBookPro ~ % cd /Users/ilia_viazov/Desktop/Projects/tidal-nano && ./ghci-color -ghci-script 'BootTidal.hs'
+Loaded package environment from /Users/ilia_viazov/.ghc/aarch64-darwin-9.6.7/environments/default
+GHCi, version 9.6.7: https://www.haskell.org/ghc/  :? for help
+[TidalCycles version 1.10.1]
+Installed in /Users/ilia_viazov/.cabal/store/ghc-9.6.7/tdl-1.10.1-3f7ff30f/share
+Listening for external controls on 127.0.0.1:6010
+Loaded GHCi configuration from BootTidal.hs
+tidal> Waiting for SuperDirt (v.1.7.2 or higher)..
+Connected to SuperDirt.
+d1 $ "bassfoo"
+tidal> d1 $ "bassfoo" <| n (run 10)
+tidal> d1 $ "bassfoo" <| n (run 12)
+tidal> d1 $ "bassfoo" <| n (run 10)
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand+0.1
+tidal> d1 $ "bassfoo" <| n (run 10) #gain "rand+0.1"
+*** Exception: Syntax error in sequence:
+  "rand+0.1"
+   ^  
+unexpected 'r'
+expecting sequence, ",", "|", "*", "/" or end of input
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand+0.1
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand+0.2
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand+0.3
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand+0.7
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand+1
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand*0.1
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand*0.9
+tidal> hush
+tidal> 
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand*0.9
+tidal> hush
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand*0.9
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand*0.1
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand*"0.9 0.1"
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand*"0.9 0.1 0.2"
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand*"<0.9 0.1 0.2>"
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand* "<0.9 0.1 0.2>"
+tidal> d1 $ "bassfoo" <| n (run 10) #gain ran d* "<0.9 0.1 0.2>"
+
+<interactive>:25:36: error: [GHC-88464]
+    Variable not in scope: ran :: Pattern Double
+    Suggested fix:
+      Perhaps use one of these:
+        ‘pan’ (imported from Sound.Tidal.Boot),
+        ‘run’ (imported from Sound.Tidal.Boot),
+        ‘tan’ (imported from Prelude)
+
+<interactive>:25:40: error: [GHC-88464] Variable not in scope: d
+tidal> d1 $ "bassfoo" <| n (run 10) #gain rand * "<0.9 0.1 0.2>"
+tidal> d2 $ "bassfoo" <| n (run 10) #gain ran d* "<0.9 0.1 0.2>"
+
+<interactive>:27:36: error: [GHC-88464]
+    Variable not in scope: ran :: Pattern Double
+    Suggested fix:
+      Perhaps use one of these:
+        ‘pan’ (imported from Sound.Tidal.Boot),
+        ‘run’ (imported from Sound.Tidal.Boot),
+        ‘tan’ (imported from Prelude)
+
+<interactive>:27:40: error: [GHC-88464] Variable not in scope: d
+tidal> d2 $ "bassfoo" <| n (run 10) #gain rand * "<0.9 0.1 0.2>"
+tidal> d2 $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry 2 $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry 2.1 $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry 2 $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry "<2 2.1>" $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry "<2 2.3>" $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry "<2 2.3 | 2.1>" $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+*** Exception: Syntax error in sequence:
+  "<2 2.3 | 2.1>"
+          ^  
+unexpected "|"
+expecting "-", "+", digit, "w", "h", "q", "e", "s", "t", "f", "x", "~", "[", "{", "<", "^", ".", "?", "," or ">"
+tidal> d2 $ hurry "<2 2.3|2.1>" $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+*** Exception: Syntax error in sequence:
+  "<2 2.3|2.1>"
+         ^  
+unexpected "|"
+expecting "-", "+", digit, "w", "h", "q", "e", "s", "t", "f", "x", "~", "[", "{", "<", "^", ".", "?", "," or ">"
+tidal> d2 $ hurry "<2 [2.3|2.1]>" $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry "<[2|2.1] [2.3|2.1]>" $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry "<[2|2.1] [2.3|2.1] [2.4 0.2]>" $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> d2 $ hurry "<[2|2.1] [2.3|2.1] [2.4 0.5]>" $ "bassfoo" <| n (run 10) #gain rand * "<0.3 0.1 0.2>"
+tidal> :quit
+Leaving GHCi.
+ilia_viazov@MacBookPro tidal-nano % 
