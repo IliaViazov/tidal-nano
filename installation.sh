@@ -10,6 +10,19 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+
+# 0. Clone tidal-nano repository into /Applications
+REPO_URL="https://github.com/IliaViazov/tidal-nano.git"
+TARGET_DIR="/Applications/tidal-nano"
+
+if [ ! -d "$TARGET_DIR" ]; then
+    echo "Cloning tidal-nano repository into $TARGET_DIR..."
+    git clone "$REPO_URL" "$TARGET_DIR"
+else
+    echo "tidal-nano already cloned in $TARGET_DIR. Pulling latest changes..."
+    git -C "$TARGET_DIR" pull
+fi
+
 # Install Homebrew if not installed
 if ! command_exists brew ; then
     echo "Homebrew not found. Installing Homebrew..."
@@ -75,16 +88,6 @@ s.waitForBoot {
 };
 EOL
 
-# 6. Clone tidal-nano repository into /Applications
-REPO_URL="https://github.com/IliaViazov/tidal-nano.git"
-TARGET_DIR="/Applications/tidal-nano"
 
-if [ ! -d "$TARGET_DIR" ]; then
-    echo "Cloning tidal-nano repository into $TARGET_DIR..."
-    git clone "$REPO_URL" "$TARGET_DIR"
-else
-    echo "tidal-nano already cloned in $TARGET_DIR. Pulling latest changes..."
-    git -C "$TARGET_DIR" pull
-fi
 
 echo "Setup complete! Please restart your terminal and enjoy TidalCycles."
