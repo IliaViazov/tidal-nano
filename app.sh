@@ -31,10 +31,10 @@ EOF
 open_new_window "cd $TIDAL_DIR && sclang '$SCLANG_SCRIPT'" "{0, $(((5 * BOTTOM / 7)+40)), $RIGHT, $(((7 * BOTTOM / 8)+40))}" "Basic"
 
 # nano log window 
-open_new_window "cd /Users/ilia_viazov/Desktop/Projects/tidal-nano/snippets && nano snippets.hs -i --softwrap -/ -_ -Z -T 4 -E --atblanks" "{$((4 *RIGHT / 9)), 0, $((RIGHT - (2 * RIGHT / 9))), $((5 * BOTTOM / 7))}" "Basic"
+open_new_window "cd /Users/ilia_viazov/Desktop/Projects/tidal-nano/snippets && nano snippets.hs -i --softwrap -/ -_ -Z -T 4 -E --atblanks" "{$((4 *RIGHT / 9)), 0, $((RIGHT - (2 * RIGHT / 7))), $((5 * BOTTOM / 7))}" "Basic"
 
 # reference window 
-open_new_window "cd $TIDAL_DIR/reference && glow" "{$((7 * RIGHT / 9)), 0, $RIGHT, $((5 * BOTTOM / 7))}" "Basic"
+open_new_window "cd $TIDAL_DIR/reference && glow" "{$((5 * RIGHT / 7)), 0, $RIGHT, $((5 * BOTTOM / 7))}" "Basic"
 
 # TidalCycles REPL 
 open_new_window "cd $TIDAL_DIR && ./ghci-color -ghci-script '$TIDAL_SCRIPT'" "{0, 0, $((RIGHT - (5 * RIGHT / 9))), $((5 * BOTTOM / 7))}" "Basic"
