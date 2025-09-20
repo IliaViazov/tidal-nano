@@ -1,4 +1,30 @@
-### MINI-NOTATION
+# NOTATION
+
+## PATTERN OPERATORS
+`|` takes the structure of the pattern and the operation sign describes the operation.
+
+`"2 3" |+ "4 5 6" = "6 8"`
+
+`"2 3" +| "4 5 6" = "6 7 9"`
+
+|**Symbol** | **Description** |
+|---|---|
+| \|+\| or (+)| Add |
+| | |
+| \|-\| or (-)| Subtract |
+| | |
+| \|*\| or (\*r)| Multiply |
+| | |
+| \|/\| or (/)| Divide |
+| | |
+| \|%\| or (%)| Modulo |
+| | |
+| \|<\| or (<)| Left values |
+| | |
+| \|>\| or (>)| Right values |
+| | |
+
+## MINI-NOTATION
 
 |**Symbol** | **Description** | **Code** |
 |--------|-------------|------|
