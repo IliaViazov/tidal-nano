@@ -27,8 +27,10 @@ fi
 if ! command_exists brew ; then
     echo "Homebrew not found. Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 else
     echo "Homebrew already installed."
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 fi
 
 echo "Updating Homebrew..."
@@ -39,8 +41,10 @@ if ! command_exists ghc ; then
     echo "Installing Haskell via ghcup..."
     curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
     echo "Haskell installation complete. You may need to restart your terminal or source your profile."
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 else
     echo "Haskell already installed."
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 fi
 
 # 2. Install TidalCycles package
@@ -48,8 +52,10 @@ if ! ghc-pkg list | grep -q tidal ; then
     echo "Installing TidalCycles..."
     cabal update
     cabal install tidal
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 else
     echo "TidalCycles already installed."
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 fi
 
 # 3.a Install Nano editor and highlight
@@ -58,8 +64,10 @@ if ! command_exists nano ; then
     brew install nano
     git clone https://github.com/scopatz/nanorc.git $install_path
     echo "include $install_path/*.nanorc" >> ~/.nanorc
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 else
     echo "Nano already installed."
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 fi
 
 # 3.b Install Glow
@@ -67,16 +75,20 @@ fi
 if ! command_exists glow ; then
     echo "Installing Glow..."
     brew install glow
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 else
     echo "Glow exists"
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 fi
 
 # 4. Install SuperCollider
 if ! command_exists sclang ; then
     echo "Installing SuperCollider..."
     brew install --cask supercollider
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 else
     echo "SuperCollider already installed."
+    echo "export PATH=\"$PATH\"" >> ~/.bashrc
 fi
 
 # 5. Install necessary Quarks for TidalCycles
