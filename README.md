@@ -1,3 +1,44 @@
+# tidal-nano
+## Installation
+```
+cd path-to-directory
+git clone https://github.com/IliaViazov/tidal-nano
+./installation.sh
+```
+The following script assumes that you have installed `git` and `homebrew`. Basically what happens in the script:
+- Updating Homebrew
+- Installing haskell
+- Installing tidal package in haskell
+- Installing nano editor with syntaxhighlighting
+- Installing SuperCollider and SuperDirt
+
+Abstraction:
+```
+# Updating homebrew
+brew update
+
+# Installing haskell
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+
+# Installing tidal package in haskell
+cabal install tidal
+
+# Installing nano editor and highlighting
+brew install nano
+git clone https://github.com/scopatz/nanorc.git $install_path
+
+# Installing glow markdown viewer
+brew install glow
+
+# Installing SuperCollider and SuperDirt
+brew install --cask supercollider
+sclang -D <<EOL
+Quarks.install("https://github.com/tidalcycles/Dirt-Samples")
+s.waitForBoot {
+    "Quarks installed".postln;
+};
+```
+
 Very small README
 
 I was always frustrated playing TidalCycles that before playing you need to make quite some steps (even without installation, just prepairing to play): open SC, boot SuperDirt, open TextEditor (in my case it was Pulsar), boot Tidal there. All together takes usually 5-6 minutes, could be optimised with fast movements to three, but still. And I was, honestly, haiting Pulsar, because it is quite annoying Text Editor sometimes.
